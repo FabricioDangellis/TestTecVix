@@ -8,7 +8,7 @@ import { AppError } from "../errors/AppError";
 import { ERROR_MESSAGE } from "../constants/erroMessages";
 import { STATUS_CODE } from "../constants/statusCode";
 
-export class UerService {
+export class UserService {
   constructor() {}
   private userModel = new UserModel();
 
