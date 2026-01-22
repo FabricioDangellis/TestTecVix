@@ -13,6 +13,16 @@ export class UserModel {
     });
   }
 
+  async getByEmail(email: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        email,
+      },
+    });
+
+    return user;
+  }
+
   async totalCount(query: TQuery, idBrandMaster?: number) {
     return prisma.user.count({
       where: {
