@@ -91,6 +91,7 @@ export const MainLoginForm = () => {
         {/* Login button */}
         <Button
           onClick={() => handleSend()}
+          disabled={isLoading}
           sx={{
             width: "100%",
             height: "48px",

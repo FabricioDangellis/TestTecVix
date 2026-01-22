@@ -9,11 +9,11 @@ export class AuthController {
 
   async register(req: CustomRequest<unknown>, res: Response) {
     const result = await this.authService.register(req.body);
-    res.status(STATUS_CODE.CREATED).json(result);
+    return res.status(STATUS_CODE.CREATED).json(result);
   }
 
   async login(req: CustomRequest<unknown>, res: Response) {
     const result = await this.authService.login(req.body);
-    res.status(STATUS_CODE.OK).json(result);
+    return res.status(STATUS_CODE.OK).json(result);
   }
 }
