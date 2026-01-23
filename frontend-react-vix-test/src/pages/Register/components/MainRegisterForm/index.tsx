@@ -20,7 +20,7 @@ export const MainRegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  const { goRegister } = useRegister();
+  const { goRegister, isLoading } = useRegister();
   const { idBrand } = useZBrandInfo();
 
   return (
@@ -69,6 +69,7 @@ export const MainRegisterForm = () => {
       />
       {/* Register button */}
       <Button
+        disabled={isLoading}
         onClick={() =>
           goRegister({ username, password, email, confirmPassword })
         }
@@ -81,14 +82,15 @@ export const MainRegisterForm = () => {
           textTransform: "none",
         }}
       >
-        <TextRob20Font1MC
-          sx={{
-            color: theme[mode].btnText,
-          }}
-        >
-          {t("loginRegister.register")}
-        </TextRob20Font1MC>
+        {isLoading ? (
+          "Cadastrando..."
+        ) : (
+          <TextRob20Font1MC sx={{ color: theme[mode].btnText }}>
+            {t("loginRegister.register")}
+          </TextRob20Font1MC>
+        )}
       </Button>
+
       {/* Back to login page */}
       <Link to="/login" className="py-3">
         <TextRob18Font2M
