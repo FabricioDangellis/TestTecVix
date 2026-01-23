@@ -208,6 +208,12 @@
             "null"
           ]
         },
+        "vmPasswordHash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "vCPU": {
           "type": "integer"
         },
@@ -216,6 +222,16 @@
         },
         "disk": {
           "type": "integer"
+        },
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "SAO_PAULO",
+            "MIAMI"
+          ]
         },
         "hasBackup": {
           "type": [

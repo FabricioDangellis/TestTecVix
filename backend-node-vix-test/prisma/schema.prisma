@@ -51,19 +51,21 @@ model brandMaster {
 }
 
 model vM {
-  idVM          Int          @id @default(autoincrement())
-  vmName        String?
-  vCPU          Int
-  ram           Int
-  disk          Int
-  hasBackup     Boolean?     @default(false)
-  idBrandMaster Int?
-  status        EVMStatus?
-  createdAt     DateTime?    @default(now()) @db.DateTime(0)
-  updatedAt     DateTime?    @default(now()) @db.DateTime(0)
-  deletedAt     DateTime?    @db.DateTime(0)
-  os            String?
-  brandMaster   brandMaster? @relation(fields: [idBrandMaster], references: [idBrandMaster])
+  idVM           Int          @id @default(autoincrement())
+  vmName         String?
+  vmPasswordHash String?      @db.VarChar(255)
+  vCPU           Int
+  ram            Int
+  disk           Int
+  location       ETaskLocation?
+  hasBackup      Boolean?     @default(false)
+  idBrandMaster  Int?
+  status         EVMStatus?
+  createdAt      DateTime?    @default(now()) @db.DateTime(0)
+  updatedAt      DateTime?    @default(now()) @db.DateTime(0)
+  deletedAt      DateTime?    @db.DateTime(0)
+  os             String?
+  brandMaster    brandMaster? @relation(fields: [idBrandMaster], references: [idBrandMaster])
 
   @@index([idBrandMaster], map: "vM_idBrandMaster_fkey")
 }
@@ -98,3 +100,9 @@ enum ERole {
   manager
   member
 }
+
+enum ETaskLocation {
+  SAO_PAULO
+  MIAMI
+}
+
